@@ -13,7 +13,7 @@ document.getElementById('login').addEventListener('click', (event) =>{
         window.location.href = 'home.html'
     }
     else{
-        console.log('failed')
+        alert('Invalid pin or mobile number')
     }
     
 })
