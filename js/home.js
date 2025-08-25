@@ -1,4 +1,6 @@
 // home js
+const requardPin = 1234;
+const transationData = [];
 
 // making a function for reuseable
 
@@ -15,7 +17,17 @@ function setInnerText(value) {
   return (document.getElementById("Balance").innerText = value);
 }
 
-const requardPin = 1234;
+// transiction History
+function transation_Data(ids) {
+  const data = {
+    name: ids,
+    date: new Date().toLocaleTimeString(),
+  };
+  return transationData.push(data);
+}
+
+
+// events of btns
 // add money
 document.getElementById("addMoneyBtn").addEventListener("click", (event) => {
   const bank = document.getElementById("bank").value;
@@ -59,7 +71,7 @@ document
     setInnerText(withdraw_Balance);
   });
 
-//Transer money
+//Transfer money
 document
   .getElementById("transferMoneyBtn")
   .addEventListener("click", (event) => {
@@ -85,68 +97,91 @@ document
 
 //coupon
 document
-.getElementById("couponMoneyBtn")
-  .addEventListener("click", (event) => {  
-  });
+  .getElementById("couponMoneyBtn")
+  .addEventListener("click", (event) => {});
 
 // pay bill
+document.getElementById("payBillBtn").addEventListener("click", (event) => {
+  const bill = document.getElementById("bill").value;
+  const billNum = document.getElementById("biller-number").value;
+  const ammountToPay = getInputs("payingAmmount");
+  const pin = getInputs("billerPin");
+  const bilBalance = getInnerText("Balance");
+
+  if (billNum.length < 11) {
+    alert("Please give valid account Number");
+    return;
+  } else if (pin !== requardPin) {
+    alert("give valid pin");
+    return;
+  }
+
+  let billAfterBalance = bilBalance - ammountToPay;
+
+  setInnerText(billAfterBalance);
+});
+
+// transiction
 document
-  .getElementById("payBillBtn")
+  .getElementById("transactionBtn")
   .addEventListener("click", (event) => {
-    const bill = document.getElementById("bill").value;
-    const billNum  = document.getElementById("biller-number").value;
-    const ammountToPay = getInputs("payingAmmount");
-    const pin = getInputs("billerPin");
-    const bilBalance = getInnerText("Balance");
-
-    if (billNum.length < 11) {
-      alert("Please give valid account Number");
-      return;
-    } else if (pin !== requardPin) {
-      alert("give valid pin");
-      return;
-    }
-
-    let billAfterBalance = bilBalance - ammountToPay;
-
-    setInnerText(billAfterBalance);
+   
   });
-
-  
-
 
 // toggler
 function displayNoneToggle(id) {
   return (document.getElementById(id).style.display = "none");
 }
 
-function addActiveClass(style){
-   const activeToggle = document.getElementsByClassName('box')
-   for(const btnToggler of activeToggle){
-      btnToggler.classList.remove("bg-[#0478fc0d]", "border-[#0478fc]")
-      btnToggler.classList.add("border-gray-400")
-   }
-   document.getElementById(style).classList.remove("border-gray-400")
-   document.getElementById(style).classList.add("bg-[#0478fc0d]", "border-[#0478fc]")
+function addActiveClass(style) {
+  const activeToggle = document.getElementsByClassName("box");
+  for (const btnToggler of activeToggle) {
+    btnToggler.classList.remove("bg-[#0478fc0d]", "border-[#0478fc]");
+    btnToggler.classList.add("border-gray-400");
+  }
+  document.getElementById(style).classList.remove("border-gray-400");
+  document
+    .getElementById(style)
+    .classList.add("bg-[#0478fc0d]", "border-[#0478fc]");
 }
+
 // add money toggler
 document.getElementById("add-money").addEventListener("click", (event) => {
   document.getElementById("add-Money").style.display = "block";
-  displayNoneToggle("withdraw-Money", "transfer-Money");
-  addActiveClass('add-money')
+  displayNoneToggle(
+    "withdraw-Money",
+    "transfer-Money",
+    "bonus-Money",
+    "billPay",
+    "transiction"
+  );
+  addActiveClass("add-money");
+  transation_Data("add-money");
 });
 // cashout toggler
 document.getElementById("Cashout").addEventListener("click", (event) => {
   document.getElementById("withdraw-Money").style.display = "block";
-  displayNoneToggle("add-Money", "transfer-Money");
-  addActiveClass('Cashout')
+
+  displayNoneToggle("add-Money");
+  displayNoneToggle("transfer-Money");
+  displayNoneToggle("bonus-Money");
+  addActiveClass("payBill");
+  addActiveClass("transiction");
+
+  addActiveClass("Cashout");
+  transation_Data("Cashout");
 });
 // transfer money toggler
 document.getElementById("money-Transfer").addEventListener("click", (event) => {
   document.getElementById("transfer-Money").style.display = "block";
   displayNoneToggle("add-Money");
   displayNoneToggle("withdraw-Money");
-  addActiveClass('money-Transfer')
+  displayNoneToggle("transiction");
+  displayNoneToggle("bonus-Money");
+  addActiveClass("payBill");
+
+  addActiveClass("money-Transfer");
+  transation_Data("money-Transfer");
 });
 // coupon toggler
 document.getElementById("getBonusMoney").addEventListener("click", (event) => {
@@ -154,7 +189,11 @@ document.getElementById("getBonusMoney").addEventListener("click", (event) => {
   displayNoneToggle("add-Money");
   displayNoneToggle("withdraw-Money");
   displayNoneToggle("transfer-Money");
-  addActiveClass('getBonusMoney')
+  displayNoneToggle("transiction");
+  addActiveClass('payBill')
+
+  addActiveClass("getBonusMoney");
+  transation_Data("getBonusMoney");
 });
 // pay bill toggler
 document.getElementById("payBill").addEventListener("click", (event) => {
@@ -163,6 +202,20 @@ document.getElementById("payBill").addEventListener("click", (event) => {
   displayNoneToggle("withdraw-Money");
   displayNoneToggle("transfer-Money");
   displayNoneToggle("bonus-Money");
-  addActiveClass('payBill')
-});
+  addActiveClass("transiction")
 
+  addActiveClass("payBill");
+  transation_Data("payBill");
+});
+// transtiction
+document.getElementById("transactionBtn").addEventListener("click", (event) => {
+  document.getElementById("transiction").style.display = "block";
+  displayNoneToggle("add-Money");
+  displayNoneToggle("withdraw-Money");
+  displayNoneToggle("transfer-Money");
+  displayNoneToggle("bonus-Money");
+  displayNoneToggle('billPay')
+
+  addActiveClass("transactionBtn");
+  transation_Data("transactionBtn");
+});
