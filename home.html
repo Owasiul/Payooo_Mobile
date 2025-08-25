@@ -18,7 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Home page</title>
   </head>
-  <body class="bg-[#f4f5f7]">
+  <body class="bg-[#f4f5f7] min-h-dvh">
     <div class="max-w-lg mx-auto">
       <div class="bg-white rounded-b-xl">
         <nav
@@ -53,7 +53,7 @@
               <!-- box-1 -->
               <div
                 id="add-money"
-                class="box cursor-pointer rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
+                class="box cursor-pointer forms rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
               >
                 <img src="assets/wallet1.png" alt="" />
                 <h3 class="text-neutral-600 text-sm">Add Money</h3>
@@ -61,35 +61,40 @@
               <!-- box-2 -->
               <div
                 id="Cashout"
-                class="box cursor-pointer rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
+                class="box cursor-pointer forms rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
               >
                 <img src="assets/send1.png" alt="" />
                 <h3 class="text-neutral-600 text-sm">Cashout</h3>
               </div>
               <!-- box-3 -->
               <div
-                class="box cursor-pointer rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
+                id="money-Transfer"
+                class="box cursor-pointer forms rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
               >
                 <img src="assets/money1.png" alt="" />
-                <h3 class="text-neutral-600 text-sm break-words whitespace-normal">Transfer Money</h3>
+                <h3 class="text-neutral-600 text-sm whitespace-nowrap">
+                  Transfer Money
+                </h3>
               </div>
               <!-- box-4 -->
               <div
-                class="box cursor-pointer rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
+              id="getBonusMoney"
+                class="box cursor-pointer forms rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
               >
                 <img src="assets/bonus1.png" alt="" />
                 <h3 class="text-neutral-600 text-sm">Get Bonus</h3>
               </div>
               <!-- box-5 -->
               <div
-                class="box cursor-pointer rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
+              id="payBill"
+                class="box cursor-pointer forms rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
               >
                 <img src="assets/purse1.png" alt="" />
                 <h3 class="text-neutral-600 text-sm">Pay Bill</h3>
               </div>
               <!-- box-6 -->
               <div
-                class="box cursor-pointer rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
+                class="box cursor-pointer forms rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
               >
                 <img src="assets/transaction1.png" alt="" />
                 <h3 class="text-neutral-600 text-sm">Transactions</h3>
@@ -98,9 +103,9 @@
           </div>
         </div>
       </div>
-
+      <!-- form section -->
       <!-- add money -->
-      <div id="add-Money" >
+      <div id="add-Money">
         <h1 class="text-lg font-bold my-5">Add Money</h1>
         <form class="bg-white rounded-[24px] p-6">
           <!-- in 1 -->
@@ -134,7 +139,7 @@
             <input
               type="number"
               id="addAmmount"
-              placeholder="Add Ammount to withdraw"
+              placeholder="Add Ammount to Add"
               class="input bg-[#f4f5f7] mt-3 rounded-2xl w-full"
             />
           </div>
@@ -158,7 +163,6 @@
           </button>
         </form>
       </div>
-
       <!-- withdraw money -->
       <div id="withdraw-Money" class="hidden">
         <h1 class="text-lg font-bold my-5">Cash Out</h1>
@@ -177,17 +181,21 @@
           </div>
           <!-- in 2 -->
           <div class="mt-4">
-            <label for="ammount" class="font-semibold block">Ammount</label>
+            <label for="withdrawAmmount" class="font-semibold block"
+              >Ammount</label
+            >
             <input
               type="number"
-              id="ammount"
+              id="withdrawAmmount"
               placeholder="Enter Ammount to withdraw"
               class="input bg-[#f4f5f7] mt-3 rounded-2xl w-full"
             />
           </div>
           <!-- in 3 -->
           <div class="mt-4">
-            <label for="withdrawPin" class="font-semibold block">Pin Number</label>
+            <label for="withdrawPin" class="font-semibold block"
+              >Pin Number</label
+            >
             <input
               type="password"
               id="withdrawPin"
@@ -202,6 +210,141 @@
             class="btn bg-[#0874f2] text-white w-full rounded-xl mt-3"
           >
             Withdraw Money
+          </button>
+        </form>
+      </div>
+      <!-- Transfer money -->
+      <div id="transfer-Money" class="hidden">
+        <h1 class="text-lg font-bold my-5">Transfer Money</h1>
+        <form class="bg-white rounded-[24px] p-6">
+          <!-- in 1 -->
+          <div class="mt-4">
+            <label for="user-number" class="font-semibold block"
+              >User Account Number</label
+            >
+            <input
+              type="number"
+              id="user-number"
+              placeholder="Enter 11 digit number"
+              class="input bg-[#f4f5f7] mt-3 rounded-2xl w-full"
+            />
+          </div>
+          <!-- in 2 -->
+          <div class="mt-4">
+            <label for="transfer-ammount" class="font-semibold block"
+              >Ammount</label
+            >
+            <input
+              type="number"
+              id="transfer-ammount"
+              placeholder="Enter Ammount to Transfer"
+              class="input bg-[#f4f5f7] mt-3 rounded-2xl w-full"
+            />
+          </div>
+          <!-- in 3 -->
+          <div class="mt-4">
+            <label for="transferPin" class="font-semibold block"
+              >Pin Number</label
+            >
+            <input
+              type="password"
+              id="transferPin"
+              placeholder="Enter 4 digit pin number"
+              class="input bg-[#f4f5f7] mt-3 rounded-2xl w-full"
+            />
+          </div>
+          <!-- btn -->
+          <button
+            type="button"
+            id="transferMoneyBtn"
+            class="btn bg-[#0874f2] text-white w-full rounded-xl mt-3"
+          >
+            Send Now
+          </button>
+        </form>
+      </div>
+      <!-- bonus money -->
+        <div id="bonus-Money" class="hidden">
+        <h1 class="text-lg font-bold my-5">Get Bonus</h1>
+        <form class="bg-white rounded-[24px] p-6">
+          <!-- in 1 -->
+          <div class="mt-4">
+            <label for="bonus-coupon" class="font-semibold block"
+              >Enter Bonus Coupon </label
+            >
+            <input
+              type="text"
+              id="bonus-coupon"
+              placeholder="Enter your Coupon"
+              class="input bg-[#f4f5f7] mt-3 rounded-2xl w-full"
+            />
+          </div>
+          <!-- btn -->
+          <button
+            type="button"
+            id="couponMoneyBtn"
+            class="btn bg-[#0874f2] text-white w-full rounded-xl mt-3"
+          >
+            Get Bonus
+          </button>
+        </form>
+      </div>
+      <!-- pay bill -->
+      <div id="billPay" class="hidden">
+        <h1 class="text-lg font-bold my-5">Pay Bill</h1>
+        <form class="bg-white rounded-[24px] p-6">
+          <!-- in 1 -->
+          <div class="mt-4">
+            <label for="bill" class="font-semibold block">Select To Pay</label>
+            <select
+              id="bill"
+              class="select w-full bg-[#f4f5f7] mt-3 rounded-2xl"
+            >
+              <option disabled selected>Select Bill</option>
+              <option>Water</option>
+              <option>Electricity</option>
+              <option>Gas</option>
+            </select>
+          </div>
+          <!-- in 2 -->
+          <div class="mt-4">
+            <label for="biller-number" class="font-semibold block"
+              >Biller Account Number</label
+            >
+            <input
+              type="number"
+              id="biller-number"
+              placeholder="Enter account number"
+              class="input bg-[#f4f5f7] mt-3 rounded-2xl w-full"
+            />
+          </div>
+          <!-- in 3 -->
+          <div class="mt-4">
+            <label for="payingAmmount" class="font-semibold block">Ammount to Pay</label>
+            <input
+              type="number"
+              id="payingAmmount"
+              placeholder="Add Ammount to Add"
+              class="input bg-[#f4f5f7] mt-3 rounded-2xl w-full"
+            />
+          </div>
+          <!-- in 4 -->
+          <div class="mt-4">
+            <label for="billerPin" class="font-semibold block">4 Digit Pin</label>
+            <input
+              type="password"
+              id="billerPin"
+              placeholder="Enter 4 digit pin number"
+              class="input bg-[#f4f5f7] mt-3 rounded-2xl w-full"
+            />
+          </div>
+          <!-- btn -->
+          <button
+            type="button"
+            id="payBillBtn"
+            class="btn bg-[#0874f2] text-white w-full rounded-xl mt-3"
+          >
+            Pay Now
           </button>
         </form>
       </div>
