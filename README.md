@@ -1,3 +1,4 @@
+<div align="left">
 # Payooo Mobile 💸  
 A lightweight mobile-friendly digital payment web app inspired by services like bKash.
 
@@ -49,7 +50,4 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 
 ## 📄 License  
 This project is open-source and available under the [MIT License](https://opensource.org/licenses/MIT).
-
----
-
-Would you like me to tailor this even more for your Flipkart Clone or add setup instructions for local development?
+</div>
