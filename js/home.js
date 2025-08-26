@@ -17,16 +17,6 @@ function setInnerText(value) {
   return (document.getElementById("Balance").innerText = value);
 }
 
-// transiction History
-function transation_Data(ids) {
-  const data = {
-    name: ids,
-    date: new Date().toLocaleTimeString(),
-  };
-  return transationData.push(data);
-}
-
-
 // events of btns
 // add money
 document.getElementById("addMoneyBtn").addEventListener("click", (event) => {
@@ -47,6 +37,12 @@ document.getElementById("addMoneyBtn").addEventListener("click", (event) => {
   let totalBalance = ammountNum + balance;
 
   setInnerText(totalBalance);
+
+  const data = {
+    name: "Add Money",
+    date: new Date().toLocaleTimeString(),
+  };
+  transationData.push(data);
 });
 
 // withdraw money
@@ -69,6 +65,12 @@ document
     let withdraw_Balance = withdrawBalance - withdrawAmmount_Num;
 
     setInnerText(withdraw_Balance);
+
+    const data = {
+      name: "Cash Out",
+      date: new Date().toLocaleTimeString(),
+    };
+    transationData.push(data);
   });
 
 //Transfer money
@@ -93,6 +95,12 @@ document
     let transfer_Balance = transferBalance - transferAmmount;
 
     setInnerText(transfer_Balance);
+
+    const data = {
+      name: "Add Money",
+      date: new Date().toLocaleTimeString(),
+    };
+    transationData.push(data);
   });
 
 //coupon
@@ -119,14 +127,37 @@ document.getElementById("payBillBtn").addEventListener("click", (event) => {
   let billAfterBalance = bilBalance - ammountToPay;
 
   setInnerText(billAfterBalance);
+
+  const data = {
+    name: "Pay Bill",
+    date: new Date().toLocaleTimeString(),
+  };
+  transationData.push(data);
 });
 
 // transiction
-document
-  .getElementById("transactionBtn")
-  .addEventListener("click", (event) => {
-   
-  });
+document.getElementById("transactionBtn").addEventListener("click", (event) => {
+  const transactionContainer = document.getElementById("transaction_container");
+  transactionContainer.innerText = "";
+  for (const addData of transationData) {
+    const div = document.createElement("div");
+    div.innerHTML = `
+    <div class="wrp flex flex-row justify-between items-center mt-4">
+            <div class="flex flex-row items-center">
+              <div class="rounded-full bg-[#e1e2e3] p-3">
+                <img src="assets/wallet1.png" alt="" />
+              </div>
+              <div class="ml-4">
+                <h1 class="font-bold text-[15px]">${addData.name}</h1>
+                <p class="text-sm">${addData.date}</p>
+              </div>
+            </div>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+    `;
+    transactionContainer.appendChild(div);
+  }
+});
 
 // toggler
 function displayNoneToggle(id) {
@@ -148,15 +179,13 @@ function addActiveClass(style) {
 // add money toggler
 document.getElementById("add-money").addEventListener("click", (event) => {
   document.getElementById("add-Money").style.display = "block";
-  displayNoneToggle(
-    "withdraw-Money",
-    "transfer-Money",
-    "bonus-Money",
-    "billPay",
-    "transiction"
-  );
+  displayNoneToggle("withdraw-Money");
+  displayNoneToggle("transfer-Money");
+  displayNoneToggle("bonus-Money");
+  displayNoneToggle("billPay");
+  displayNoneToggle("transiction");
+
   addActiveClass("add-money");
-  transation_Data("add-money");
 });
 // cashout toggler
 document.getElementById("Cashout").addEventListener("click", (event) => {
@@ -165,11 +194,10 @@ document.getElementById("Cashout").addEventListener("click", (event) => {
   displayNoneToggle("add-Money");
   displayNoneToggle("transfer-Money");
   displayNoneToggle("bonus-Money");
-  addActiveClass("payBill");
-  addActiveClass("transiction");
+  displayNoneToggle("billPay");
+  displayNoneToggle("transiction");
 
   addActiveClass("Cashout");
-  transation_Data("Cashout");
 });
 // transfer money toggler
 document.getElementById("money-Transfer").addEventListener("click", (event) => {
@@ -178,10 +206,9 @@ document.getElementById("money-Transfer").addEventListener("click", (event) => {
   displayNoneToggle("withdraw-Money");
   displayNoneToggle("transiction");
   displayNoneToggle("bonus-Money");
-  addActiveClass("payBill");
+  addActiveClass("billPay");
 
   addActiveClass("money-Transfer");
-  transation_Data("money-Transfer");
 });
 // coupon toggler
 document.getElementById("getBonusMoney").addEventListener("click", (event) => {
@@ -190,10 +217,9 @@ document.getElementById("getBonusMoney").addEventListener("click", (event) => {
   displayNoneToggle("withdraw-Money");
   displayNoneToggle("transfer-Money");
   displayNoneToggle("transiction");
-  addActiveClass('payBill')
+  displayNoneToggle("billPay");
 
   addActiveClass("getBonusMoney");
-  transation_Data("getBonusMoney");
 });
 // pay bill toggler
 document.getElementById("payBill").addEventListener("click", (event) => {
@@ -202,10 +228,9 @@ document.getElementById("payBill").addEventListener("click", (event) => {
   displayNoneToggle("withdraw-Money");
   displayNoneToggle("transfer-Money");
   displayNoneToggle("bonus-Money");
-  addActiveClass("transiction")
+  displayNoneToggle("transiction");
 
   addActiveClass("payBill");
-  transation_Data("payBill");
 });
 // transtiction
 document.getElementById("transactionBtn").addEventListener("click", (event) => {
@@ -214,8 +239,7 @@ document.getElementById("transactionBtn").addEventListener("click", (event) => {
   displayNoneToggle("withdraw-Money");
   displayNoneToggle("transfer-Money");
   displayNoneToggle("bonus-Money");
-  displayNoneToggle('billPay')
+  displayNoneToggle("billPay");
 
   addActiveClass("transactionBtn");
-  transation_Data("transactionBtn");
 });

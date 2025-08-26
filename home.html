@@ -78,7 +78,7 @@
               </div>
               <!-- box-4 -->
               <div
-              id="getBonusMoney"
+                id="getBonusMoney"
                 class="box cursor-pointer forms rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
               >
                 <img src="assets/bonus1.png" alt="" />
@@ -86,7 +86,7 @@
               </div>
               <!-- box-5 -->
               <div
-              id="payBill"
+                id="payBill"
                 class="box cursor-pointer forms rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
               >
                 <img src="assets/purse1.png" alt="" />
@@ -94,7 +94,7 @@
               </div>
               <!-- box-6 -->
               <div
-              id="transactionBtn"
+                id="transactionBtn"
                 class="box cursor-pointer forms rounded-xl flex flex-col justify-center items-center md:p-5 p-3 border border-gray-400"
               >
                 <img src="assets/transaction1.png" alt="" />
@@ -265,14 +265,14 @@
         </form>
       </div>
       <!-- bonus money -->
-        <div id="bonus-Money" class="hidden">
+      <div id="bonus-Money" class="hidden">
         <h1 class="text-lg font-bold my-5">Get Bonus</h1>
         <form class="bg-white rounded-[24px] p-6">
           <!-- in 1 -->
           <div class="mt-4">
             <label for="bonus-coupon" class="font-semibold block"
-              >Enter Bonus Coupon </label
-            >
+              >Enter Bonus Coupon
+            </label>
             <input
               type="text"
               id="bonus-coupon"
@@ -321,7 +321,9 @@
           </div>
           <!-- in 3 -->
           <div class="mt-4">
-            <label for="payingAmmount" class="font-semibold block">Ammount to Pay</label>
+            <label for="payingAmmount" class="font-semibold block"
+              >Ammount to Pay</label
+            >
             <input
               type="number"
               id="payingAmmount"
@@ -331,7 +333,9 @@
           </div>
           <!-- in 4 -->
           <div class="mt-4">
-            <label for="billerPin" class="font-semibold block">4 Digit Pin</label>
+            <label for="billerPin" class="font-semibold block"
+              >4 Digit Pin</label
+            >
             <input
               type="password"
               id="billerPin"
@@ -350,17 +354,17 @@
         </form>
       </div>
       <!-- transiction -->
-       <div id="transiction" class="hidden">
+      <div id="transiction" class="hidden">
         <div class="flex flex-row justify-between align-center my-5">
-          <h1 class="text-lg font-bold ">Transaction History</h1>
+          <h1 class="text-lg font-bold">Transaction History</h1>
           <p class="text-neutral-500 font-semibold">View All</p>
         </div>
-        <div class="border border-[#0808081a] bg-white rounded-xl p-4 w-full flex flex-row gap-4">
-          <div class="rounded-full bg-gray-400 p-2">
-            <img src="assets/purse1.png" alt="">
-          </div>
+        <div
+          id="transaction_container"
+          class="border border-[#0808081a] bg-white rounded-xl p-4 w-full gap-4"
+        >   
         </div>
-       </div>
+      </div>
     </div>
 
     <script src="js/home.js"></script>
